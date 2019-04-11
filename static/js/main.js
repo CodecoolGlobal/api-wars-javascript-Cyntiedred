@@ -15,17 +15,9 @@ function displayPage(){
         let residents = result[i].residents;
         let residentTag = 'There is no resident';
         if (residents.length > 0){
-            residentTag = `<button class="residentBtn" data-toggle="modal" data-target="#residentModal" aria-labelledby="residentModalLabel" aria-hidden="true">There are  ${residents.length} residents.</button>`
+            residentTag = `<button class="residentBtn" data-toggle="modal" data-target="#residentModal" aria-labelledby="residentModalLabel" aria-hidden="true">There are ${residents.length} residents.</button>`
         }
-        myTable.insertAdjacentHTML('beforeend',`<tr class="tabledata">
-                                                                <td>${name}</td>
-                                                                <td>${diameter}</td>
-                                                                <td>${climate}</td>
-                                                                <td>${terrain}</td>
-                                                                <td>${surface_water}</td>
-                                                                <td>${population}</td>
-                                                                <td>${residentTag}</td>
-                                                            </tr>`);
+        myTable.insertAdjacentHTML('beforeend',`<tr class="tabledata"><td>${name}</td><td>${diameter}</td><td>${climate}</td><td>${terrain}</td><td>${surface_water}</td><td>${population}</td><td>${residentTag}</td></tr>`);
         $('#residentModalModal').on('.residentBtn', displayResidents (event))
 
         }
@@ -49,9 +41,6 @@ displayPage();
 
 let prevBtn = document.querySelector('#prev');
 let nextBtn = document.querySelector('#next');
-
-
-
 
 prevBtn.addEventListener('click', function(event){
     if (f <= 1){
