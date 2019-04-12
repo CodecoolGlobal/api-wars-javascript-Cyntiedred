@@ -16,6 +16,10 @@ def home_page():
 
 @app.route('/registration', methods=['GET', 'POST'])
 def registration():
+    if 'user_name' in session:
+        user_name = session['user_name']
+    else:
+        user_name = None
     if request.method == "POST":
         user_name = request.form.get('user_name')
         pass1 = request.form.get('pass1')
@@ -25,12 +29,16 @@ def registration():
             data_handler.register_a_new_user(user_name, hashed_pass)
             return redirect(url_for('home_page'))
         else:
-            return render_template('registration.html')
+            return render_template('registration.html', user_name=user_name)
 
-    return render_template('registration.html')
+    return render_template('registration.html', user_name=user_name)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if 'user_name' in session:
+        user_name = session['user_name']
+    else:
+        user_name = None
     if request.method == "POST":
         user_name = request.form.get('user_name')
         pass1 = request.form.get('pass1')
@@ -44,13 +52,13 @@ def login():
                 return redirect(url_for('home_page'))
             else:
                 text = "False user name or password. Try again!"
-                return render_template('login.html', text=text)
+                return render_template('login.html', text=text, user_name=user_name)
 
         text = "False user name or password. Try again!"
 
-        return render_template('login.html', text=text)
+        return render_template('login.html', text=text, user_name=user_name)
 
-    return render_template('login.html')
+    return render_template('login.html', user_name=user_name)
 
 
 @app.route('/logout')
