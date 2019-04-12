@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{{text}}
+
+<br>
+
+    <form class="login" name="login" action="{{ url_for('login') }}"
+          method=post>
+        <div class="gap-15"></div>
+        <h2 class="title_login">Login</h2>
+        <p>
+            <label for="user_name"><b>User name</b></label><br>
+            <br><input placeholder="Gipsz Jakab" name="user_name" cols="40" rows="4">
+        </p>
+        <p>
+            <label for="password"><b>Password</b></label><br>
+            <br><input required type="password" placeholder="Password..." name="pass1" cols="40" rows="4">
+        </p>
+
+            <input class="button" type="submit"  value="Login">
+        </p>
+
+    </form>
+
+{% endblock %}

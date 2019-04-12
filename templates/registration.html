@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+    <form class="registration_form" name="registration" action="{{ url_for('registration') }}"
+          method=post>
+        <br>
+       <h4 class="title_registration">Registration</h4>
+        <p>
+            <label for="user_name"><b>User Name</b></label><br>
+            <br><input required class="username" type="text" placeholder="User Name" name="user_name" cols="40" rows="4">
+        </p>
+        <p>
+            <label for="password"><b>Password</b></label><br>
+            <br><input required type="password" placeholder="Password..." name="pass1" cols="40" rows="4">
+        </p>
+        <p>
+            <label for="confirm_password"><b>Confirm Password</b></label><br>
+            <br><input required type="password" placeholder="Confirm password..." name="pass2" cols="40" rows="4">
+        </p>
+        <p>
+            <input class="button" type="submit" onclick="check_pass()" value="Register">
+        </p>
+        <script>
+            function check_pass() {
+                let x = document.forms['registration']['pass1'].value;
+                let y = document.forms['registration']['pass2'].value;
+                if (x !== y) {
+                    alert("Passwords are different! Try again!")
+                    return false;
+                }
+            }
+        </script>
+    </form>
+
+
+
+{% endblock %}

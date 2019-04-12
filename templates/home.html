@@ -2,8 +2,18 @@
 {% block content %}
 
 
+
+
+<h1>API Wars</h1>
+
+<br>
+
+
 <button id="prev" class="btn btn-warning btn-sml" role="button">« Previous</button>
 <button id="next" class="btn btn-warning btn-sml" role="button">Next »</button>
+
+<br>
+<br>
 
 <table id ='mytable' class="table table-bordered">
     <tr><th>Planet Names</th>
@@ -15,8 +25,6 @@
         <th>Residents</th>
     </tr>
 </table>
-
-
 
 <div class="modal fade" id="residentModal" tabindex="-1" role="dialog" aria-labelledby="residentModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -30,9 +38,6 @@
       <div class="modal-body">
         <table class="modalvalues">
             <tr><th>Residents</th></tr>
-            {% for resident in residents %}
-                <tr><td>{{resident}}</td></tr>
-            {% endfor %}
         </table>
       </div>
       <div class="modal-footer">
