@@ -1,4 +1,9 @@
 .modal-content{
     width: max-content;
 
+
+}
+
+.modal-dialog{
+    margin-left: 230px;
 }
