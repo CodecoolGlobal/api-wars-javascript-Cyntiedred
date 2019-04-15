@@ -8,11 +8,11 @@ function displayPage(){
     let result = response.results;
     for (let i=0;i<result.length;i++) {
         let name = result[i].name;
-        let diameter = result[i].diameter;
+        let diameter = result[i].diameter + ' km';
         let climate = result[i].climate;
         let terrain = result[i].terrain;
-        let surface_water = result[i].surface_water;
-        let population = result[i].population;
+        let surface_water = result[i].surface_water + ' %';
+        let population = result[i].population + ' people';
         let residents = result[i].residents;
         let residentTag = 'There is no resident';
         if (residents.length > 0){
@@ -28,23 +28,26 @@ function displayPage(){
             for (let n=0; n<ar.length; n++){
                $.getJSON(ar[n], function(response){
                    let nameRes = response.name;
-                   let heightRes = response.height;
-                   let massRes = response.mass;
+                   let heightRes = response.height/100 + ' m';
+                   let massRes = response.mass + ' kg';
                    let hairRes = response.hair_color;
                    let skinRes = response.skin_color;
                    let eyeRes = response.eye_color;
                    let birthRes = response.birth_year;
                    let genderRes = response.gender;
+                   if (genderRes === 'male') {
+                       genderRes = `<i class="fas fa-mars"></i>`
+                   }else if (genderRes === 'female'){
+                       genderRes = `<i class="fas fa-venus"></i>`
+                   }
+
                    modalTable.insertAdjacentHTML('beforeend',`<tr class="residentdata"><td>${nameRes}</td><td>${heightRes}</td><td>${massRes}</td><td>${hairRes}</td><td>${skinRes}</td><td>${eyeRes}</td><td>${birthRes}</td><td>${genderRes}</td></tr>`);
                });
             }
-            })
+            });
 
     });
 }
-
-
-
 
 
 displayPage();
